@@ -26,8 +26,8 @@ class MarkovMachine {
    *
    * */
 
+  //TODO: use a map here (check the map api)
   getChains() {
-    // TODO: implement this!
 
     const chains = {};
 
@@ -37,13 +37,16 @@ class MarkovMachine {
         chains[this.words[i]] = [];
       }
 
+      // TODO: use || operator to get result of determining subpart
       if (this.words[i + 1] !== undefined) {
         chains[this.words[i]].push(this.words[i + 1]);
 
       } else {
         chains[this.words[i]].push(null);
       }
+
     }
+
     return chains;
   }
 
