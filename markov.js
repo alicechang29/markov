@@ -60,6 +60,33 @@ class MarkovMachine {
     // - start at the first word in the input text
     // - find a random word from the following-words of that
     // - repeat until reaching the terminal null
+
+
+    // accessing first array of first key in object
+    //randomly pick a value
+    // go to the chains[value]
+    //randomly pick a value
+    // do until chains[value] selected is null
+
+    let currWord = this.words[0];
+
+    let text = currWord;
+
+    while (currWord !== null) {
+      currWord = this.getRandomWord(this.chains[currWord]);
+
+      if (currWord === null) {
+        break;
+      }
+
+      text += ` ${currWord}`;
+    }
+    return text;
+
+  }
+
+  getRandomWord(words) {
+    return words[Math.floor(Math.random() * words.length)];
   }
 }
 
