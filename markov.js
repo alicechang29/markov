@@ -72,16 +72,15 @@ class MarkovMachine {
 
     let text = currWord;
 
-    while (currWord !== null) {
+    while (true) {
       currWord = this.getRandomWord(this.chains[currWord]);
 
       if (currWord === null) {
-        break;
+        return text;
       }
 
       text += ` ${currWord}`;
     }
-    return text;
 
   }
 
