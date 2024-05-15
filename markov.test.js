@@ -6,10 +6,7 @@ let markov;
 
 // NOTE: use beforeAll for setup that needs to be done once
 // make a new MarkovMachine for each test
-beforeEach(function () {
-    phrase = "The cat in the hat.";
-    markov = new MarkovMachine(phrase);
-});
+
 
 // TODO: put in its own describe
 // test("test successful creation of MarkovMachine instance", function () {
@@ -20,7 +17,13 @@ beforeEach(function () {
 //use "the cat in the cat" to test for possible loop
 //below never hits the possibility of looping
 // test this first with a more complex example
+
 describe("test getChains", function () {
+    beforeEach(function () {
+        phrase = "The cat in the hat.";
+        markov = new MarkovMachine(phrase);
+    });
+
     test("successful", function () {
         expect(markov.getChains()).toEqual({
             "The": ["cat"],
@@ -33,12 +36,23 @@ describe("test getChains", function () {
 });
 
 describe("test getText", function () {
+    beforeEach(function () {
+        phrase = "The cat in the hat.";
+        markov = new MarkovMachine(phrase);
+    });
+
     test("successful", function () {
         expect(markov.getText()).toEqual("The cat in the hat.");
     });
-    // split the text by " "
-    // loop through each word
-    // check that the next word is the in this.chains for the currWord
+
+});
+
+
+describe("test with branches", function () {
+    beforeEach(function () {
+        phrase = "the cat in the cat";
+        markov = new MarkovMachine(phrase);
+    });
 
     test("Markov validity", function () {
         const chains = markov.chains;
@@ -50,5 +64,6 @@ describe("test getText", function () {
 
         expect(chains[words.slice(-1)].includes(null)).toEqual(true);
     });
+
 
 });
